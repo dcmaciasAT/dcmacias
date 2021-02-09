@@ -3,9 +3,9 @@ package com.atsistemas.dcmacias.domain;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -42,8 +42,8 @@ public class User {
 	private String userlastname;
 
 	@ApiModelProperty(notes = "The contacts of the user")
-	@JoinTable(name = "USERS_CONTACTS", joinColumns = @JoinColumn(name = "FK_USER", nullable = false), inverseJoinColumns = @JoinColumn(name = "FK_CONTACT", nullable = false))
-	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "USERS_CONTACT", joinColumns = @JoinColumn(name = "user_id", nullable = false), inverseJoinColumns = @JoinColumn(name = "contact_id", nullable = false))
+	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Contact> contacts;
 
 	public Long getPhone() {

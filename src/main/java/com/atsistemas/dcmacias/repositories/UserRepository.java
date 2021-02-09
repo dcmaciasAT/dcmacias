@@ -1,10 +1,13 @@
 package com.atsistemas.dcmacias.repositories;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import com.atsistemas.dcmacias.domain.User;
 
-@Repository
+@Transactional
 public interface UserRepository extends JpaRepository<User, Long>{
+		
+	
 }

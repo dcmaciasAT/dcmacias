@@ -1,18 +1,18 @@
 package com.atsistemas.dcmacias.domain;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
-import lombok.Data;
 
-@Data
-@Builder
 @Entity
 @Table(name = "CONTACT")
 public class Contact {
@@ -52,11 +52,20 @@ public class Contact {
 		this.contactName = contactName;
 	}
 
+	@ManyToMany(mappedBy = "contacts", fetch = FetchType.EAGER)
+	private Set<User> users;
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+
 	@Override
 	public String toString() {
 		return "Contact [phone=" + phone + ", contactName=" + contactName + "]";
 	}
 
-	
-	
 }

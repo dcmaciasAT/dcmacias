@@ -25,10 +25,14 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import service.UserService;
 
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {
+	 @Autowired
+	  private UserService userService;
+	
 	@Autowired
 	private UserRepository userRepository;
 
