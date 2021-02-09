@@ -1,0 +1,52 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.2.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.atsistemas'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+mavenLocal()
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/spring/' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
+        maven { url 'https://maven.aliyun.com/repository/spring-plugin/' }
+
+        mavenCentral()
+	  jcenter()
+}
+
+dependencies {
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'	
+	implementation 'javax.xml:jaxb-api'
+	compile "com.zaxxer:HikariCP:3.2.0"
+	implementation 'javax.validation:validation-api:2.0.0.Final'
+	implementation 'org.springframework.boot:spring-boot-starter-validation:2.4.2'	
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'	
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    compileOnly 'org.projectlombok:lombok'
+	implementation 'io.springfox:springfox-swagger2:3.0.0'
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+    implementation 'io.springfox:springfox-bean-validators'
+    implementation 'javax.annotation:javax.annotation-api'    
+    implementation 'io.swagger.core.v3:swagger-annotations'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}
